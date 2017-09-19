@@ -11,7 +11,7 @@ router.get('/hello', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-  res.json(req);
+  res.json(req.body);
 });
 
 module.exports = router;
