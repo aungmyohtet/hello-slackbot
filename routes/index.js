@@ -70,8 +70,15 @@ router.get('/register', function(req, res, next) {
 };
 
 request.post(options, function(err, res, body) {  
-    let json = JSON.parse(body);
-    console.log(json);
+    console.log("request post callback function");
+    if (err) {
+        console.log("error occurred");
+        console.log(JSON.stringify(err));
+    }
+    if (body) {
+        console.log(body);
+        console.log("body json is >>>>>" + JSON.stringify(body));
+    }
 });  
 
   res.json(req.param('code'));
