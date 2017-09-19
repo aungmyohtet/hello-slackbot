@@ -18,6 +18,10 @@ router.get('/hello', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
+  if (!req.param('code')) {
+      req.json('No code');
+      return;
+  }
   var post_data = querystring.stringify({
       'client_id' : '57141088304.242744617409',
       'client_secret': 'fe9100cc60001da2ab018b91417b26bc',
