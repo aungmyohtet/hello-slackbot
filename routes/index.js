@@ -6,6 +6,7 @@ var querystring = require('querystring');
 var https = require('https');
 var fs = require('fs');
 var axios = require('axios');
+var request = require('request');
 
 
 
@@ -20,7 +21,7 @@ router.get('/hello', function(req, res, next) {
 
 router.get('/register', function(req, res, next) {
   if (!req.param('code')) {
-      req.json('No code');
+      res.json('No code');
       return;
   }
   var post_data = querystring.stringify({
@@ -58,18 +59,20 @@ router.get('/register', function(req, res, next) {
   //}
 
   // Send a POST request
-axios({
-  method: 'post',
-  url: 'https://slack.com//api/oauth.access',
-  data: {
-    'client_id' : '57141088304.242744617409',
+  let options = {  
+    url: 'httpe://slack.com/api/oauth.access',
+    form: {
+        'client_id' : '57141088304.242744617409',
       'client_secret': 'fe9100cc60001da2ab018b91417b26bc',
       'code': req.param('code'),
       'redirect_uri' : 'http://amh-slackbot.herokuapp.com/register'
-  }
-}).then(function(data) {
-    console.log(">>>>>>>>>>>>>data is " + data)
-});
+    }
+};
+
+request.post(options, function(err, res, body) {  
+    let json = JSON.parse(body);
+    console.log(json);
+});  
 
   res.json(req.param('code'));
 });
