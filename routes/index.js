@@ -3,7 +3,7 @@ var router = express.Router();
 
 // We need this to build our post string
 var querystring = require('querystring');
-var http = require('http');
+var https = require('https');
 var fs = require('fs');
 
 
@@ -38,7 +38,7 @@ router.get('/register', function(req, res, next) {
   };
 
   // Set up the request
-  var post_req = http.request(post_options, function(res) {
+  var post_req = https.request(post_options, function(res) {
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
           console.log('>>>>>>>>>>>>>>>>>>>>>>>Response: ' + chunk);
