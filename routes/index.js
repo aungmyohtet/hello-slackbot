@@ -30,7 +30,7 @@ router.get('/register', function(req, res, next) {
       host: 'slack.com',
       port: '80',
       path: '/api/oauth.access',
-      method: 'POST',
+      method: 'GET',
       headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Content-Length': Buffer.byteLength(post_data)
