@@ -75,6 +75,9 @@ request.post(options, function(err, res, body) {
         console.log("error occurred");
         console.log(JSON.stringify(err));
     }
+    if (res) {
+        console.log("res is " + JSON.stringify(res));
+    }
     if (body) {
         console.log(body);
         console.log("body json is >>>>>" + JSON.stringify(body));
