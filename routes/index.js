@@ -30,16 +30,18 @@ router.get("/register", function(req, res, next) {
         url: data.incoming_webhook.url,
         method: "POST",
         json: {
-          text: 'Hello! Can you finish your tasks today?'
+          text: 'Hello!'
         }
       },
-      function(error, response, _data) {
-
+      function(error, response, resData) {
+        if (resData) {
+          console.log(JSON.stringify(resData));
+        }
       }
     );
   });
 
-  res.json(req.param("code"));
+  res.redirect('/');
 });
 
 module.exports = router;
