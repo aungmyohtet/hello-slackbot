@@ -16,14 +16,14 @@ router.get("/register", function(req, res, next) {
     res.json("No code");
     return;
   }
-  var post_data = {
+  var permissionRequestData = {
     client_id: "57141088304.242744617409",
     client_secret: "fe9100cc60001da2ab018b91417b26bc",
     code: req.param("code"),
     redirect_uri: "http://amh-slackbot.herokuapp.com/register"
   };
 
-  slack.oauth.access(post_data, (err, data) => {
+  slack.oauth.access(permissionRequestData, (err, data) => {
     console.log(">>>>>>> data is " + JSON.stringify(data));
     request(
       {
