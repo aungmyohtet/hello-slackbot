@@ -22,7 +22,7 @@ router.get('/register', function(req, res, next) {
       'redirect_uri' : 'http://amh-slackbot.herokuapp.com/register'
   };
 
-  slack.oauth.access(post_data, (err, data) => { console.log(">>>>>>> data is " + data)});
+  slack.oauth.access(post_data, (err, data) => { console.log(">>>>>>> data is " + JSON.stringify(data))});
 
   res.json(req.param('code'));
 });
