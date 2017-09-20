@@ -30,7 +30,7 @@ router.get("/register", function(req, res, next) {
         url: data.incoming_webhook.url,
         method: "POST",
         json: {
-          text: 'Hello!'
+          text: 'Hello! Can you finish your tasks today?'
         }
       },
       function(error, response, _data) {
